@@ -34,11 +34,11 @@ Separates the footprint by **what unlocks the Homepass** (a route, or a negotiat
 
 - **Línea A**: lights up with the route. No access agreement, no active equipment inside the building.
 - **Línea B**: per building. Access agreement, active equipment, power, internal cabling.
-- A threshold of 25, 48 or 96 HP moves the boundary between the two. It does not decide whether MDU gets deployed.
+- **Decided 2026-09-04 (David Woolsey): threshold is 24 HP.** A building at 24 HP or under is Línea A — direct connection, SFU-style, no active equipment. Above 24 HP it's Línea B, sized with an 18-, 24- or 48-port F58 (or multiples of them, matched to the building) rather than a fixed 48-port unit per building.
 
 **Plan against the MEZCLA mix (the finer allocation): 29,191 Línea A + 30,843 Línea B = 60,034 countable, requiring 596 access agreements.**
 
-**What the threshold trades, at once:** moving 25→96 takes Línea B from 672 buildings to 157, pushes fibre-thread demand from 8,152 to 13,698, and swings active-device consumption 4.3x. **Nobody owns this decision.** It sits above both growth and redes and should be the first real decision a City Review makes (see `04_CADENCE.md`).
+**Not yet resolved by the threshold decision:** the MEZCLA figures above come from a finer building-level allocation, not a straight per-building cut at 24 HP. This file's own threshold sweep put ~672 buildings into Línea B at a threshold of 25 — close to but not identical to MEZCLA's 596. Whether the plan now runs on the straight 24 HP cut or keeps MEZCLA's finer mix, and what that does to fibre-thread demand and device counts once buildings are sized to 18/24/48-port F58s instead of a flat 48-port assumption, is a model recompute that belongs in `fiberx-model-CDMX`, not invented here. Don't order fibre or devices off either number until that recompute happens.
 
 ## Three different numbers, don't conflate them
 
@@ -67,7 +67,7 @@ Current CDMX production is zero. The 500-1,000/month figure that circulates is C
 
 ## The zone pipeline gap
 
-- The 3+ zones needed beyond Polanco and Santa Fe are, as of this writing: not named, not surveyed, not designed, not permitted, no CAA sites identified, no contractor allocated, no ClickUp task.
+- **Update, 2026-09-04:** the sequence is now named — Miguel Hidalgo, Alvaro Obregon and Benito Juarez (Roma, Narvarte) first, then Cuauhtemoc and Azcapotzalco. David Woolsey is leading zone selection personally with growth, designing the KMZ for these neighborhoods the weekend of 2026-09-05/06 for planning the week of 2026-09-08. Still not surveyed, designed or permitted, and no CAA sites or contractor allocated yet.
 - **Santa Fe cannot contribute to year 1.** Permits run about a year; year 1 closes 2027-08-01.
 - **Selection criterion for new zones is permit velocity, not density or demand.** Where street work can actually be permitted, or where a contractor already holds permits.
 - **The pipeline needs a path that does not depend on MELI's address data.** MELI's cooperation on the Address Database is discretionary (Sch 1, 3.2(b): "as available and at MELI's sole discretion"), no delivery obligation, no date.
@@ -95,7 +95,7 @@ Built on the MEZCLA mix (596 agreements, 30,843 Línea B HP). **Consumption is d
 
 ## Live gaps against the model (not yet resolved)
 
-1. **Is field validation a prerequisite for route design?** 4,786 of 4,788 DATA MAPEO records are PENDIENTE, base is a 2021 cadastre. Owner: redes plus the ops seat holding permitting (see `03`). Decide by end September 2026.
+1. ~~Is field validation a prerequisite for route design?~~ **Decided 2026-09-04 (David Woolsey): no.** Route design proceeds on DATA MAPEO as the working dataset, PENDIENTE records and all. HP/address data will never be 100% accurate — that's a property to design around, not a gate to clear first. This doesn't resolve which of the three circulating Polanco HP totals (see `00_INDEX.md`) is the planning number; that question is still open and still David's to run, against Catastro access and the COMPAS/KMZ mapping work with Stiven.
 2. **Who decides the Línea A/B threshold?** Unowned. First real City Review decision, per `04_CADENCE.md`.
 3. **There is no cost dimension.** The threshold, mix, and CWDM-vs-more-fibre questions are being argued on operational grounds when they're economic. Two cost-per-Homepass numbers (one per línea), Somos actuals only, is the single highest-value model addition. No external benchmark, per `08_VERIFIED_RESEARCH.md`.
 4. **Línea B is a five-handoff workflow with no process owner**: access agreement (growth), active equipment (hardware), power (ops/CFE), internal cabling (contractor), install/activation (field). A building stalling silently between two handoffs costs a Cohort month and shows on no dashboard. First SOP the process discipline in `05_PROCESS_AND_SOP.md` should produce.
